@@ -14,11 +14,14 @@ app.use(express.json());
 // Import user routes
 import userRouter from "./routes/user.route.js";
 
+import postRouter from "./routes/post.route.js";
 // Connect user routes to base URL
 app.use("/api/v1/users", userRouter);
+app.use("/api/v1/posts", postRouter);
+
+
 
 export default app;
-
 
 
 
