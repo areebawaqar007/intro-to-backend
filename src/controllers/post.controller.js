@@ -1,7 +1,6 @@
 import { Post } from "../models/post.model.js";
 
 const createPost = async (req, res) => {
-  console.log("POST HIT");
   try {
     const { name, description, age } = req.body;
 
