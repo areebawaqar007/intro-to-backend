@@ -17,7 +17,6 @@ import userRouter from "./routes/user.route.js";
 // Connect user routes to base URL
 app.use("/api/v1/users", userRouter);
 
-// Export app to use in server file
 export default app;
 
 
