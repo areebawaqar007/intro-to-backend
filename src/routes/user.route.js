@@ -11,6 +11,7 @@ router.route('/logout').post(logoutUser);
 
 export default router;
 
+// A route is a path + method that defines how your server responds to a request.
 
 // This file defines a user registration API route using Express Router.
 

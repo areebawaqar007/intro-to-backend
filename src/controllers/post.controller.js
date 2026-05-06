@@ -22,7 +22,8 @@ const createPost = async (req, res) => {
     });
   } catch (error) {
     res.status(500).json({
-      message: "internal server error",error
+      message: "internal server error",
+      error,
     });
   }
 };
@@ -33,7 +34,8 @@ const getPosts = async (req, res) => {
     res.status(200).json(posts);
   } catch (error) {
     res.status(500).json({
-      message: "internal server error",error
+      message: "internal server error",
+      error,
     });
   }
 };
@@ -45,9 +47,11 @@ const updatePost = async (req, res) => {
         message: "NO dtaa provided for updtae",
       });
     }
-    const post = await Post.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    });
+   
+    const post = await Post.findById(req.params.id);
+    Object.assign(post, req.body);
+    await post.save();
+      
     if (!post)
       return res.status(404).json({
         message: "post not found",
@@ -59,7 +63,8 @@ const updatePost = async (req, res) => {
     });
   } catch (error) {
     res.status(500).json({
-      message: "internal server error",error
+      message: "internal server error",
+      error,
     });
   }
 };
@@ -77,9 +82,9 @@ const deletePost = async (req, res) => {
     });
   } catch (error) {
     res.status(500).json({
-        message: "internal server error",
-        error
+      message: "internal server error",
+      error,
     });
   }
 };
-export { createPost, getPosts, updatePost,deletePost };
+export { createPost, getPosts, updatePost, deletePost };
